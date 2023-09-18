@@ -2,6 +2,7 @@ package com.imt.part;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 
@@ -9,6 +10,7 @@ import java.util.Objects;
 public class PartEntity {
 
     @Id
+    @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     private Long id;
 
     @Column
