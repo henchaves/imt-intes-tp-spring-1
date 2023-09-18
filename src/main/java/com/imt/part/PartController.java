@@ -13,6 +13,9 @@ import java.util.List;
 public class PartController {
 
     @Autowired
+    private SupplierService supplierService;
+
+    @Autowired
     private PartRepository partRepository;
 
 
@@ -45,5 +48,10 @@ public class PartController {
     public List<PartDto> findBySupplierCode(@PathVariable String supplierCodeRegex) {
         supplierCodeRegex = "%" + supplierCodeRegex + "%";
         return PartMapper.entityToDto(partRepository.findBySupplierCodeLike(supplierCodeRegex));
+    }
+
+    @GetMapping("/external")
+    public PartDto getExternal() {
+        return PartMapper.entityToDto(supplierService.getCurrentWeather());
     }
 }
