@@ -14,6 +14,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/swagger-ui/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/service/**").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/service/**").hasRole("admin")
                 .antMatchers("/service/**").hasRole("user")
